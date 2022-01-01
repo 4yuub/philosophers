@@ -6,29 +6,40 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:07 by akarafi           #+#    #+#             */
-/*   Updated: 2021/12/31 18:00:58 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/01 19:20:22 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include "colors.h"
 
-void	*func(void *arg)
+int	how_to_use(void)
 {
-	printf("hello world!\n");
-	sleep(1);
-	printf("hello world again\n");
-	return (arg);
+	printf(
+		"%show to use: %s\n\
+%s./philo %s{nbr_of_philos} %s{time_to_die}\
+ %s{time_to_eat} %s{time_to_sleep}\
+ %s{number_of_times_each_philosopher_must_eat}%s\n",
+		BLUE,
+		GREEN,
+		WHITE,
+		RED,
+		RED,
+		RED,
+		RED,
+		CYAN,
+		WHITE
+		);
+	printf("\n\t\t\t\t\t%sRED%s is required %sCYAN%s is optional\n",
+		RED, WHITE, CYAN, WHITE);
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	pthread_t	th;
-	pthread_t	th2;
-
+	// pthread_t	th;
+	// pthread_t	th2;
 	(void) av;
-	(void) ac;
-	pthread_create(&th, NULL, &func, NULL);
-	pthread_create(&th2, NULL, &func, NULL);
-	pthread_join(th, NULL);
-	pthread_join(th2, NULL);
+	if (ac < 4)
+		return (how_to_use());
 }
