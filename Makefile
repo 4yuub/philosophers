@@ -3,7 +3,9 @@ INC = includes
 CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
-SRCS = philo.c
+COMMON = ft_atoi.c
+SRCS =	$(addprefix common_utils/, $(COMMON))\
+		philo.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

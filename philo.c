@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:07 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/01 20:19:05 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/02 03:18:15 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int	how_to_use(void)
 
 int	main(int ac, char **av)
 {
-	// pthread_t	th;
-	// pthread_t	th2;
+	t_time	tp2;
+
 	(void) av;
 	if (ac < 5 || ac > 6)
 		return (how_to_use());
+	gettimeofday(&tp2, NULL);
+	printf("%lds%dus\n", tp2.tv_sec, tp2.tv_usec);
 }
