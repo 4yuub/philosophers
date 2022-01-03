@@ -4,7 +4,10 @@ CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
 COMMON = ft_atoi.c
+INIT = init_table.c
 SRCS =	$(addprefix common_utils/, $(COMMON))\
+		$(addprefix init/, $(INIT))\
+		garbage.c\
 		philo.c
 OBJS = $(SRCS:.c=.o)
 
