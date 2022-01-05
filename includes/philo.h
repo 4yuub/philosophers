@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/04 21:50:19 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/05 03:12:00 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 
 // init:
 void	init_table(t_table **table, int ac, char **av, t_list **garbage);
+t_philo	*get_philos(t_table *table, t_list **garbage);
 
 // common utils:
 int		ft_atoi(const char *str, bool *error);

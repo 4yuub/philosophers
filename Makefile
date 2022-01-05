@@ -4,7 +4,7 @@ CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
 COMMON = ft_atoi.c
-INIT = init_table.c
+INIT = init_table.c get_philos.c
 SRCS =	$(addprefix common_utils/, $(COMMON))\
 		$(addprefix init/, $(INIT))\
 		garbage.c\
