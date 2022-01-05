@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:06:17 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/05 03:16:04 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/05 04:20:15 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_philo	*get_philos(t_table *table, t_list **garbage)
 
 	i = 0;
 	first = NULL;
-	puts("hello");
 	while (i < table->nbr_of_philos)
 	{
 		add_philo(i + 1, &first, garbage);

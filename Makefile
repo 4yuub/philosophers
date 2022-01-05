@@ -5,8 +5,10 @@ RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
 COMMON = ft_atoi.c
 INIT = init_table.c get_philos.c
+ROUTIN = start_routin.c
 SRCS =	$(addprefix common_utils/, $(COMMON))\
 		$(addprefix init/, $(INIT))\
+		$(addprefix routin/, $(ROUTIN))\
 		garbage.c\
 		philo.c
 OBJS = $(SRCS:.c=.o)
