@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/03 14:12:42 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/04 21:50:19 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_philo
 {
 	pthread_t		th;
 	int				number;
-	bool			is_eating;
+	pthread_mutex_t	fork;
 	struct s_philo	*next;
 	struct s_philo	*previous;
 }		t_philo;
