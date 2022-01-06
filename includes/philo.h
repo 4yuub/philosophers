@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/05 04:46:47 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 06:10:52 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_philo
 	pthread_t		th;
 	int				number;
 	pthread_mutex_t	fork;
+	t_table			*table;
+	long			last_eat;
+	int				nbr_of_eats;
 	struct s_philo	*next;
 	struct s_philo	*previous;
 }		t_philo;
@@ -57,8 +60,11 @@ t_philo	*get_philos(t_table *table, t_list **garbage);
 
 // common utils:
 int		ft_atoi(const char *str, bool *error);
+long	get_time(void);
 
 // do routin:
 void	start_routin(t_table *table, t_philo *first);
 void	wait_threads(t_philo *first);
+void	*do_routin(t_philo *philo);
+
 #endif

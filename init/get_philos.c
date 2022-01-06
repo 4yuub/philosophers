@@ -6,19 +6,23 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:06:17 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/05 04:20:15 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 06:10:27 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	add_philo(int n, t_philo **philos, t_list **garbage)
+static void	add_philo(int n, t_philo **philos, t_table *table, t_list **garbage)
 {
 	t_philo	*new_philo;
 
 	new_philo = malloc(sizeof(t_philo));
 	add_garbge(new_philo, garbage);
 	new_philo->number = n;
+	new_philo->table = table;
+	new_philo->last_eat = 0;
+	new_philo->nbr_of_eats = 0;
+	pthread_mutex_init(&new_philo->fork, NULL);
 	if (!*philos)
 	{
 		new_philo->next = new_philo;
@@ -40,7 +44,7 @@ t_philo	*get_philos(t_table *table, t_list **garbage)
 	first = NULL;
 	while (i < table->nbr_of_philos)
 	{
-		add_philo(i + 1, &first, garbage);
+		add_philo(i + 1, &first, table, garbage);
 		i++;
 	}
 	return (first);

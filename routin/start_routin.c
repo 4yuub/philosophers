@@ -6,17 +6,11 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 04:21:51 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/05 04:52:00 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 05:41:32 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	*do_routin(t_philo *philo)
-{
-	printf("philo: %d\n", philo->number);
-	return (NULL);
-}
 
 void	start_routin(t_table *table, t_philo *first)
 {
@@ -43,6 +37,7 @@ void	wait_threads(t_philo *first)
 	while (!i++ || philo != first)
 	{
 		pthread_join(philo->th, NULL);
+		pthread_mutex_destroy(&philo->fork);
 		philo = philo->next;
 	}
 }
