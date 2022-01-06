@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 06:10:52 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 19:47:39 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_table
 	int		die;
 	int		full;
 	int		nbr_of_philos;
-	t_time	time;
+	long	start_time;
 }		t_table;
 
 typedef struct s_philo
@@ -61,9 +61,10 @@ t_philo	*get_philos(t_table *table, t_list **garbage);
 // common utils:
 int		ft_atoi(const char *str, bool *error);
 long	get_time(void);
+long	get_time2(t_philo *philo);
 
 // do routin:
-void	start_routin(t_table *table, t_philo *first);
+void	start_routin(t_philo *first);
 void	wait_threads(t_philo *first);
 void	*do_routin(t_philo *philo);
 

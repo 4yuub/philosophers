@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 06:04:50 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 06:08:29 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 19:47:15 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,9 @@ long	get_time(void)
 	gettimeofday(&tp, NULL);
 	time = tp.tv_sec * 1e3 + tp.tv_usec / 1e3;
 	return (time);
+}
+
+long	get_time2(t_philo *philo)
+{
+	return (get_time() - philo->table->start_time);
 }

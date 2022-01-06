@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 05:10:46 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 07:06:52 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 19:49:01 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	*do_routin(t_philo *philo)
 {
-	if (philo != philo->previous)
+	while (true)
 	{
 		pthread_mutex_lock(&philo->fork);
+		printf("%ld %d has taken a fork\n", get_time2(philo), philo->number);
 		pthread_mutex_lock(&philo->previous->fork);
-		//take fork
-		//eating
+		printf("%ld %d has taken a fork\n", get_time2(philo), philo->number);
+		printf("%ld %d is eating\n", get_time2(philo), philo->number);
+		usleep(philo->table->eat * 1e3);
 		pthread_mutex_unlock(&philo->fork);
 		pthread_mutex_unlock(&philo->previous->fork);
+		printf("%ld %d is sleeping\n", get_time2(philo), philo->number);
+		usleep(philo->table->sleep * 1e3);
+		printf("%ld %d is thinking\n", get_time2(philo), philo->number);
 	}
-	//sleeping
-	//thiking
 	return (NULL);
 }

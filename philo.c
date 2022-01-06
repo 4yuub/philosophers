@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:07 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/05 04:50:02 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/06 19:18:01 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 		return (how_to_use());
 	init_table(&table, ac, av, &garbage);
 	first = get_philos(table, &garbage);
-	start_routin(table, first);
+	start_routin(first);
 	wait_threads(first);
 	clear(&garbage);
 }
