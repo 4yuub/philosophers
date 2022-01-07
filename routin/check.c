@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_routin.c                                     :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 04:21:51 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 04:27:02 by akarafi          ###   ########.fr       */
+/*   Created: 2022/01/07 04:27:58 by akarafi           #+#    #+#             */
+/*   Updated: 2022/01/07 04:43:08 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	start_routin(t_philo *first)
+void	check_death_and_full(t_philo *philo)
 {
-	int		i;
-	t_philo	*philo;
-
-	i = 0;
-	philo = first;
-	while (!i++ || philo != first)
+	while (true)
 	{
-		pthread_create(&philo->th, NULL, (void *)(void *)do_routin, philo);
-		usleep(100);
-		philo = philo->next;
-	}
-}
-
-void	detach_threads(t_philo *first)
-{
-	int		i;
-	t_philo	*philo;
-
-	i = 0;
-	philo = first;
-	while (!i++ || philo != first)
-	{
-		pthread_detach(philo->th);
-		pthread_mutex_destroy(&philo->fork);
+		if (get_time() - philo->last_eat >= philo->table->die)
+		{
+			pthread_mutex_lock(&philo->table->print);
+			printf("%ld %d die\n", get_time2(philo), philo->number);
+			return ;
+		}
+		usleep(50);
 		philo = philo->next;
 	}
 }

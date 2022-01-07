@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 02:10:22 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 04:33:44 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ long	get_time2(t_philo *philo);
 
 // do routin:
 void	start_routin(t_philo *first);
-void	wait_threads(t_philo *first);
+void	detach_threads(t_philo *first);
 void	*do_routin(t_philo *philo);
+void	check_death_and_full(t_philo *philo);
 
 #endif

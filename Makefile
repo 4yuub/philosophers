@@ -5,7 +5,7 @@ RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
 COMMON = ft_atoi.c time.c
 INIT = init_table.c get_philos.c
-ROUTIN = start_routin.c routin.c
+ROUTIN = start_routin.c routin.c check.c
 SRCS =	$(addprefix common_utils/, $(COMMON))\
 		$(addprefix init/, $(INIT))\
 		$(addprefix routin/, $(ROUTIN))\
