@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 04:27:58 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 04:43:08 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 04:52:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	check_death_and_full(t_philo *philo)
 			printf("%ld %d die\n", get_time2(philo), philo->number);
 			return ;
 		}
-		usleep(50);
 		philo = philo->next;
 	}
 }
