@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 04:33:44 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 05:09:12 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_table
 	int				die;
 	int				full;
 	int				nbr_of_philos;
+	int				nbr_of_full_philos;
 	long			start_time;
 	pthread_mutex_t	print;
 }		t_table;
@@ -51,6 +52,7 @@ typedef struct s_philo
 	t_table			*table;
 	long			last_eat;
 	int				nbr_of_eats;
+	bool			is_full;
 	struct s_philo	*next;
 	struct s_philo	*previous;
 }		t_philo;

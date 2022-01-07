@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:06:17 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 17:49:00 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 05:20:45 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	add_philo(int n, t_philo **philos, t_table *table, t_list **garbage)
 	new_philo->table = table;
 	new_philo->last_eat = table->start_time;
 	new_philo->nbr_of_eats = 0;
+	new_philo->is_full = false;
 	pthread_mutex_init(&new_philo->fork, NULL);
 	if (!*philos)
 	{
