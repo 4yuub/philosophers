@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 19:47:39 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 02:10:22 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void	add_garbge(void *ptr, t_list **garbage);
 typedef struct timeval	t_time;
 typedef struct s_table
 {
-	int		sleep;
-	int		eat;
-	int		die;
-	int		full;
-	int		nbr_of_philos;
-	long	start_time;
+	int				sleep;
+	int				eat;
+	int				die;
+	int				full;
+	int				nbr_of_philos;
+	long			start_time;
+	pthread_mutex_t	print;
 }		t_table;
 
 typedef struct s_philo
