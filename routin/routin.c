@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 05:10:46 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 05:17:30 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/07 07:31:36 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	*do_routin(t_philo *philo)
 		printf("%ld %d has taken a fork\n", get_time2(philo), philo->number);
 		printf("%ld %d is eating\n", get_time2(philo), philo->number);
 		pthread_mutex_unlock(&philo->table->print);
+		philo->last_eat = get_time();
 		usleep(philo->table->eat * 1e3);
 		philo->last_eat = get_time();
 		philo->nbr_of_eats++;
