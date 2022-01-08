@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:53:44 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 02:35:15 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 15:54:37 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	how_to_use(void)
 {
 	printf(
 		"%show to use: %s\n\
-%s./philo %s{nbr_of_philos} %s{time_to_die}\
+%s./philo_bonus %s{nbr_of_philos} %s{time_to_die}\
  %s{time_to_eat} %s{time_to_sleep}\
  %s{number_of_times_each_philosopher_must_eat}%s\n",
 		BLUE,

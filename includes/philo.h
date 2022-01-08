@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 02:53:23 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 16:51:52 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 // bonus:
 # include <semaphore.h>
+# include <signal.h>
 
 // garbage collector:
 typedef struct s_list

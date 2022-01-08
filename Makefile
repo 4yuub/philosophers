@@ -1,4 +1,5 @@
 NAME = philo
+BONUS_NAME = philo_bonus
 INC = includes
 CC = cc
 RM = rm -rf
@@ -13,11 +14,22 @@ SRCS =	$(addprefix common_utils/, $(COMMON))\
 		philo.c
 OBJS = $(SRCS:.c=.o)
 
+BONUS_SRCS =	$(addprefix common_utils/, $(COMMON))\
+				bonus/init.c\
+				bonus/philo_bonus.c\
+				garbage.c
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+
 all: $(NAME)
 
 $(NAME):$(OBJS)
 	@$(CC) $(CFLAGS) -pthread $(OBJS) -o $(NAME)
 	@echo done\!
+
+bonus:$(BONUS_OBJS)
+	@$(CC) $(CFLAGS) -pthread $(BONUS_OBJS) -o $(BONUS_NAME)
+	@echo done\!
+
 
 %.o:%.c $(INC)
 	@echo compiling...

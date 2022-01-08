@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 03:00:55 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 18:46:15 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,16 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 
 void	do_routin_bonus(t_philo_b *philo)
 {
-	printf("hello proccess %d\n", philo->number);
+	while (1)
+	{
+		printf("hello proccess %d\n", philo->number);
+		sleep(1);
+		if (1)
+		{
+			printf("good bye\n");
+			return ;
+		}
+	}
 }
 
 void	start_philos(t_table_b *table, t_list **garbage)
@@ -47,10 +56,10 @@ void	start_philos(t_table_b *table, t_list **garbage)
 	int			i;
 
 	i = -1;
-	sem_init(&table->forks, 1, table->nbr_of_philos);
 	while (++i < table->nbr_of_philos)
 	{
 		philo = malloc(sizeof(t_philo_b));
+		add_garbge(philo, garbage);
 		philo->last_eat = get_time();
 		philo->nbr_of_eats = 0;
 		philo->number = i + 1;
@@ -60,5 +69,8 @@ void	start_philos(t_table_b *table, t_list **garbage)
 			do_routin_bonus(philo);
 			exit(0);
 		}
+		usleep(100);
 	}
+	while (i--)
+		waitpid(-1, NULL, 0);
 }
