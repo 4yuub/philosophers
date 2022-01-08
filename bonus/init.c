@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 19:26:35 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 20:13:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 
 void	do_routin_bonus(t_philo_b *philo)
 {
-	philo->table->forks = sem_open("forks", O_EXCL);
+	//philo->table->forks = sem_open("forks", O_EXCL);
 	while (1)
 	{
 		sem_wait(philo->table->forks);
@@ -49,11 +49,11 @@ void	do_routin_bonus(t_philo_b *philo)
 		sem_post(philo->table->forks);
 		sem_post(philo->table->forks);
 		printf("\n");
-		// if (1)
-		// {
-		// 	printf("good bye\n");
-		// 	return ;
-		// }
+		if (1)
+		{
+			printf("good bye\n");
+			return ;
+		}
 	}
 }
 
@@ -64,7 +64,7 @@ void	start_philos(t_table_b *table, t_list **garbage)
 
 	i = -1;
 	table->forks = sem_open("forks",
-			O_CREAT | O_EXCL, S_IRGRP | S_IWGRP, table->nbr_of_philos);
+			O_CREAT | O_EXCL, 0644, table->nbr_of_philos);
 	while (++i < table->nbr_of_philos)
 	{
 		philo = malloc(sizeof(t_philo_b));
@@ -78,7 +78,7 @@ void	start_philos(t_table_b *table, t_list **garbage)
 			do_routin_bonus(philo);
 			exit(0);
 		}
-		usleep(500);
+		usleep(100);
 	}
 	while (i--)
 		waitpid(-1, NULL, 0);
