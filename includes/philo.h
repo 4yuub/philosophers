@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 16:51:52 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 19:10:24 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ typedef struct s_table_b
 	int		die;
 	int		full;
 	int		nbr_of_philos;
-	sem_t	forks;
-	sem_t	nbr_of_full_philos;
+	sem_t	*forks;
+	sem_t	*nbr_of_full_philos;
 }		t_table_b;
 
 typedef struct s_philo_b
