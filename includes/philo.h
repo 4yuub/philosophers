@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 05:09:12 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/08 02:53:23 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+// bonus:
+# include <semaphore.h>
 
 // garbage collector:
 typedef struct s_list
@@ -72,4 +75,27 @@ void	detach_threads(t_philo *first);
 void	*do_routin(t_philo *philo);
 void	check_death_and_full(t_philo *philo);
 
+// bonus:
+
+typedef struct s_table_b
+{
+	int		sleep;
+	int		eat;
+	int		die;
+	int		full;
+	int		nbr_of_philos;
+	sem_t	forks;
+	sem_t	nbr_of_full_philos;
+}		t_table_b;
+
+typedef struct s_philo_b
+{
+	int			number;
+	long		last_eat;
+	t_table_b	*table;
+	int			nbr_of_eats;
+}		t_philo_b;
+void	init_table_bonus(t_table_b **table, \
+										int ac, char **av, t_list **garbage);
+void	start_philos(t_table_b *table, t_list **garbage);
 #endif
