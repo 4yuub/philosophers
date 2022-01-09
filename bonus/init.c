@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 03:06:27 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 17:13:00 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	start_philos(t_table_b *table, t_list **garbage)
 		}
 		usleep(100);
 	}
-	while (i--)
-		waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
+	// kill all childs
 	sem_close(table->forks);
 }

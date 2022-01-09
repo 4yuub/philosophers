@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 03:08:24 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 17:11:19 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ void	init_table_bonus(t_table_b **table, \
 void	start_philos(t_table_b *table, t_list **garbage);
 long	get_time3(t_philo_b *philo);
 void	do_routin_bonus(t_philo_b *philo);
+void	*check_death(t_philo_b *philo);
 
 #endif
