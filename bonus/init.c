@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 20:13:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 03:06:27 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 	(*table)->die = ft_atoi(av[2], &error);
 	(*table)->eat = ft_atoi(av[3], &error);
 	(*table)->sleep = ft_atoi(av[4], &error);
+	(*table)->start_time = get_time();
 	if (ac == 6)
 		(*table)->full = ft_atoi(av[5], &error);
 	else
@@ -36,35 +37,16 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 	}
 }
 
-void	do_routin_bonus(t_philo_b *philo)
-{
-	//philo->table->forks = sem_open("forks", O_EXCL);
-	while (1)
-	{
-		sem_wait(philo->table->forks);
-		printf("take fork %d\n", philo->number);
-		sem_wait(philo->table->forks);
-		printf("take fork %d\n", philo->number);
-		sleep(1);
-		sem_post(philo->table->forks);
-		sem_post(philo->table->forks);
-		printf("\n");
-		if (1)
-		{
-			printf("good bye\n");
-			return ;
-		}
-	}
-}
-
 void	start_philos(t_table_b *table, t_list **garbage)
 {
 	t_philo_b	*philo;
 	int			i;
 
+	sem_unlink("forks");
+	sem_unlink("print");
+	table->forks = sem_open("forks", O_CREAT, 0644, table->nbr_of_philos);
+	table->print = sem_open("print", O_CREAT, 0644, 1);
 	i = -1;
-	table->forks = sem_open("forks",
-			O_CREAT | O_EXCL, 0644, table->nbr_of_philos);
 	while (++i < table->nbr_of_philos)
 	{
 		philo = malloc(sizeof(t_philo_b));

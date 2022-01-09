@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/08 19:10:24 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 03:08:24 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 // bonus:
 # include <semaphore.h>
 # include <signal.h>
+# include <fcntl.h>
+# include <wait.h>
 
 // garbage collector:
 typedef struct s_list
@@ -85,7 +87,9 @@ typedef struct s_table_b
 	int		die;
 	int		full;
 	int		nbr_of_philos;
+	long	start_time;
 	sem_t	*forks;
+	sem_t	*print;
 	sem_t	*nbr_of_full_philos;
 }		t_table_b;
 
@@ -99,4 +103,7 @@ typedef struct s_philo_b
 void	init_table_bonus(t_table_b **table, \
 										int ac, char **av, t_list **garbage);
 void	start_philos(t_table_b *table, t_list **garbage);
+long	get_time3(t_philo_b *philo);
+void	do_routin_bonus(t_philo_b *philo);
+
 #endif

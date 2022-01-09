@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 06:04:50 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/06 19:47:15 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 02:46:11 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ long	get_time(void)
 }
 
 long	get_time2(t_philo *philo)
+{
+	return (get_time() - philo->table->start_time);
+}
+
+long	get_time3(t_philo_b *philo)
 {
 	return (get_time() - philo->table->start_time);
 }
