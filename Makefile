@@ -19,6 +19,8 @@ BONUS_SRCS =	$(addprefix common_utils/, $(COMMON))\
 				bonus/philo_bonus.c\
 				bonus/do_routin.c\
 				bonus/check.c\
+				bonus/pid_list.c\
+				bonus/wait.c\
 				garbage.c
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 

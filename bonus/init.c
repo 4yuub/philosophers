@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 17:13:00 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 19:51:09 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,24 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 	}
 }
 
-void	start_philos(t_table_b *table, t_list **garbage)
+static void	init_semaphores(t_table_b *table)
 {
-	t_philo_b	*philo;
-	int			i;
-
 	sem_unlink("forks");
 	sem_unlink("print");
 	table->forks = sem_open("forks", O_CREAT, 0644, table->nbr_of_philos);
 	table->print = sem_open("print", O_CREAT, 0644, 1);
+}
+
+t_pid	*start_philos(t_table_b *table, t_list **garbage)
+{
+	t_philo_b	*philo;
+	int			i;
+	int			id;
+	t_pid		*pids;
+
 	i = -1;
+	pids = NULL;
+	init_semaphores(table);
 	while (++i < table->nbr_of_philos)
 	{
 		philo = malloc(sizeof(t_philo_b));
@@ -55,14 +63,11 @@ void	start_philos(t_table_b *table, t_list **garbage)
 		philo->nbr_of_eats = 0;
 		philo->number = i + 1;
 		philo->table = table;
-		if (fork() == 0)
-		{
+		id = fork();
+		if (id == 0)
 			do_routin_bonus(philo);
-			exit(0);
-		}
+		add_pid(id, &pids);
 		usleep(100);
 	}
-	waitpid(-1, NULL, 0);
-	// kill all childs
-	sem_close(table->forks);
+	return (pids);
 }

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 17:11:19 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 19:57:00 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <semaphore.h>
 # include <signal.h>
 # include <fcntl.h>
-# include <wait.h>
 
 // garbage collector:
 typedef struct s_list
@@ -100,11 +99,22 @@ typedef struct s_philo_b
 	t_table_b	*table;
 	int			nbr_of_eats;
 }		t_philo_b;
+
+typedef struct s_pid
+{
+	int				id;
+	struct s_pid	*next;
+}	t_pid;
+
 void	init_table_bonus(t_table_b **table, \
 										int ac, char **av, t_list **garbage);
-void	start_philos(t_table_b *table, t_list **garbage);
+t_pid	*start_philos(t_table_b *table, t_list **garbage);
 long	get_time3(t_philo_b *philo);
 void	do_routin_bonus(t_philo_b *philo);
 void	*check_death(t_philo_b *philo);
+
+void	add_pid(int id, t_pid **pids);
+void	clear_pids(t_pid **pid);
+void	wait_philos(t_pid *pid);
 
 #endif
