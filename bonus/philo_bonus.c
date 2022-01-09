@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 23:53:44 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 19:57:32 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 22:40:13 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	main(int ac, char **av)
 	if (ac < 5 || ac > 6)
 		return (how_to_use());
 	init_table_bonus(&table, ac, av, &garbage);
-	wait_philos(start_philos(table, &garbage));
+	wait_philos(start_philos(table, &garbage), table);
 	clear(&garbage);
 }

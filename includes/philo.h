@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 19:57:00 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 22:40:35 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	*check_death(t_philo_b *philo);
 
 void	add_pid(int id, t_pid **pids);
 void	clear_pids(t_pid **pid);
-void	wait_philos(t_pid *pid);
+void	wait_philos(t_pid *pid, t_table_b *table);
 
 #endif

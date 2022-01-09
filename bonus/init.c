@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/09 19:51:09 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/09 22:45:59 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,18 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 
 static void	init_semaphores(t_table_b *table)
 {
+	int	i;
+
 	sem_unlink("forks");
 	sem_unlink("print");
+	sem_unlink("full");
 	table->forks = sem_open("forks", O_CREAT, 0644, table->nbr_of_philos);
+	table->nbr_of_full_philos = \
+		sem_open("full", O_CREAT, 0644, table->nbr_of_philos);
 	table->print = sem_open("print", O_CREAT, 0644, 1);
+	i = -1;
+	while (++i < table->nbr_of_philos)
+		sem_wait(table->nbr_of_full_philos);
 }
 
 t_pid	*start_philos(t_table_b *table, t_list **garbage)
