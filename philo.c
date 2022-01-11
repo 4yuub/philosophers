@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:07 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 05:16:01 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/11 17:00:05 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,15 @@ int	main(int ac, char **av)
 	t_list	*garbage;
 	t_philo	*first;
 	t_table	*table;
+	bool	error;
 
 	garbage = NULL;
 	if (ac < 5 || ac > 6)
 		return (how_to_use());
-	init_table(&table, ac, av, &garbage);
+	error = false;
+	init_table(&table, &error, av, &garbage);
+	if (error)
+		return (0);
 	first = get_philos(table, &garbage);
 	start_routin(first);
 	check_death_and_full(first);
