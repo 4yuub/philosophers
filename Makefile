@@ -14,13 +14,9 @@ SRCS =	$(addprefix common_utils/, $(COMMON))\
 		philo.c
 OBJS = $(SRCS:.c=.o)
 
+BONUS = check.c do_routin.c init.c philo_bonus.c pid_list.c wait.c
 BONUS_SRCS =	$(addprefix common_utils/, $(COMMON))\
-				bonus/init.c\
-				bonus/philo_bonus.c\
-				bonus/do_routin.c\
-				bonus/check.c\
-				bonus/pid_list.c\
-				bonus/wait.c\
+				$(addprefix bonus/, $(BONUS))\
 				garbage.c
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
