@@ -16,7 +16,8 @@ void	check_death_and_full(t_philo *philo)
 {
 	while (true)
 	{
-		if (get_time() - philo->last_eat >= philo->table->die)
+		if (get_time() - philo->last_eat >= philo->table->die
+			&& philo->table->will_die)
 		{
 			pthread_mutex_lock(&philo->table->print);
 			printf("%ld %d die\n", get_time2(philo), philo->number);

@@ -25,7 +25,8 @@ void	*check_death(t_philo_b *philo)
 {
 	while (1)
 	{
-		if (get_time() - philo->last_eat > philo->table->die)
+		if (get_time() - philo->last_eat > philo->table->die
+			&& philo->table->will_die)
 		{
 			sem_wait(philo->table->print);
 			printf("%ld %d die\n", get_time3(philo), philo->number);
