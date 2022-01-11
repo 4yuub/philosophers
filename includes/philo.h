@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 15:35:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/11 17:00:36 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/11 21:11:56 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_table
 	int				eat;
 	int				die;
 	int				full;
-	bool				will_die;
+	bool			will_die;
 	int				nbr_of_philos;
 	int				nbr_of_full_philos;
 	long			start_time;

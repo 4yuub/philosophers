@@ -40,11 +40,11 @@ bonus:$(BONUS_OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(BONUS_OBJS)
 	@echo object files removed successfully
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BONUS_NAME)
 	@echo philo program removed successfully
 
 re: fclean all
