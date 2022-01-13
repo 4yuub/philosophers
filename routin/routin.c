@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 05:10:46 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/07 07:44:26 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/13 08:55:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	__do_routin(t_philo *philo)
 	if (philo->number)
 		printf("%ld %d has taken a fork\n", get_time2(philo), philo->number);
 	pthread_mutex_unlock(&philo->table->print);
-	pthread_mutex_lock(&philo->next->fork);
+	pthread_mutex_lock(&philo->previous->fork);
 	pthread_mutex_lock(&philo->table->print);
 	if (philo->number)
 		printf("%ld %d has taken a fork\n", get_time2(philo), philo->number);
@@ -43,7 +43,7 @@ static void	__do_routin(t_philo *philo)
 	philo->last_eat = get_time();
 	philo->nbr_of_eats++;
 	pthread_mutex_unlock(&philo->fork);
-	pthread_mutex_unlock(&philo->next->fork);
+	pthread_mutex_unlock(&philo->previous->fork);
 	__part2(philo);
 }
 
