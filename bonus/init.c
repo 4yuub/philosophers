@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 00:21:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/01/13 08:52:58 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/01/13 10:50:05 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ void	init_table_bonus(t_table_b **table, int ac, char **av, t_list **garbage)
 	(*table)->eat = ft_atoi(av[3], &error);
 	(*table)->sleep = ft_atoi(av[4], &error);
 	(*table)->start_time = get_time();
-	(*table)->will_die = ((*table)->sleep + (*table)->eat > (*table)->die
-			|| (*table)->eat * 2 > (*table)->die
-			|| (*table)->sleep > (*table)->die
-			|| (*table)->nbr_of_philos == 1);
 	if (ac == 6)
 		(*table)->full = ft_atoi(av[5], &error);
 	else

@@ -1,6 +1,6 @@
 NAME = philo
 BONUS_NAME = philo_bonus
-INC = includes
+INC = includes/
 CC = cc
 RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
@@ -31,7 +31,7 @@ bonus:$(BONUS_OBJS)
 	@echo done\!
 
 
-%.o:%.c $(INC)
+%.o:%.c $(INC)/philo.h
 	@echo compiling...
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
 
